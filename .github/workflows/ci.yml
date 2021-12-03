@@ -25,4 +25,4 @@ jobs:
       - name: Run tests
         env:
           BUNDLER_VERSION: ${{matrix.bundler}}
-        run: bin/test
+        run: bundle exec rake test
