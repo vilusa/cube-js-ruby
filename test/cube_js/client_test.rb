@@ -8,16 +8,22 @@ class CubeJS::ClientTest < Test::Unit::TestCase
     assert CubeJS::Client.new api_token: 'API_TOKEN', base_url: 'https://api.example.com/v1'
   end
 
-  # test 'should with ENV variables' do
-  #   test_case = proc {
-  #     ENV['CUBEJS_BASE_URL'] = 'https://api.example.com/v1'
-  #     ENV['CUBEJS_API_TOKEN'] = 'API_TOKEN'
-  #
-  #     assert CubeJS::Client.new
-  #   }
-  #
-  #   test_case.call
-  # end
+  test 'should with ENV variables' do
+    # Before
+    old_base_url_value = ENV['CUBEJS_BASE_URL']
+    old_api_token_value = ENV['CUBEJS_API_TOKEN']
+
+    # When
+    ENV['CUBEJS_BASE_URL'] = 'https://api.example.com/v1'
+    ENV['CUBEJS_API_TOKEN'] = 'API_TOKEN'
+
+    # Expect
+    assert CubeJS::Client.new
+
+    # Clear ENV variables
+    ENV['CUBEJS_BASE_URL'] = old_base_url_value
+    ENV['CUBEJS_API_TOKEN'] = old_api_token_value
+  end
 
   test 'should get ArgumentError without base_url' do
     assert_raises ArgumentError, 'Base URL Not Provided' do
