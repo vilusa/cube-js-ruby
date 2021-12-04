@@ -1,4 +1,16 @@
+<p align="center"><a href="https://cube.dev"><img src="https://i.imgur.com/zYHXm4o.png" alt="Cube.js" width="300px"></a></p>
+
+__Cube.js is an open-source analytical API platform.__ It is primarily used to build internal business intelligence tools or add customer-facing analytics to existing applications.
+
+Cube.js was designed to work with serverless data warehouses and query engines like Google BigQuery and AWS Athena. A multi-stage querying approach makes it suitable for handling
+trillions of data points. Most modern RDBMS work with Cube.js as well and can be
+further tuned for performance.
+
+For more details, see the [Cube.js introduction](https://cube.dev/docs/cubejs-introduction) page in our documentation.
+
 # cube.js Ruby Client
+
+The cube.js REST API gem allows Ruby developers to access the cube.js service programmatically.
 
 ## Installation
 
@@ -15,6 +27,31 @@ And then execute:
 Or install it yourself as:
 
     $ gem install cube_js
+
+
+## Getting Started
+
+cube.js Ruby Client need to be configured before they can start making API calls.
+
+### Using with initializer
+
+You can will configure with parameters
+```ruby
+client = CubeJS::Client.new api_toke: 'API_TOKEN', base_url: 'https://api.example.com/v1'
+```
+
+### Using with ENV variables
+
+You can set the cube server keys using environment variables.
+
+Set the `CUBEJS_API_TOKEN` and `CUBEJS_BASE_URL` env var to the name of the env vars containing the cube server credentials. (Example with set `CUBEJS_API_TOKEN=API_TOKEN` and `CUBEJS_BASE_URL=https://api.example.com/v1` now cube.js client will use the values of the cube server credentials env var when initializing
+```ruby
+ENV['CUBEJS_BASE_URL'] = 'https://api.example.com/v1'
+ENV['CUBEJS_API_TOKEN'] = 'API_TOKEN'
+
+client = CubeJS::Client.new
+```
+
 
 ## Development
 

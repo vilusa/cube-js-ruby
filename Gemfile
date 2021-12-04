@@ -7,4 +7,3 @@ gemspec
 
 gem 'minitest', '~> 5.0'
 gem 'rake', '~> 12.0'
-gem 'zeitwerk', '~> 2.5', '>= 2.5.1'
